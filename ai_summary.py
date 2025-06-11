@@ -1,9 +1,10 @@
 # ai_summary.py
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 
-# Load tokenizer dan model Qwen
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3-0.6B")
+# Load tokenizer dan model ringan yang kompatibel
+tokenizer = AutoTokenizer.from_pretrained("distilgpt2")
+model = AutoModelForCausalLM.from_pretrained("distilgpt2")
+
 
 # Buat pipeline text-generation
 pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=300)
