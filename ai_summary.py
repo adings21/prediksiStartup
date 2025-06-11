@@ -1,13 +1,19 @@
-# ai_summary.py
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 
-# Load tokenizer dan model Qwen
+# Load tokenizer dan model GPT-Neo 125M
 tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-neo-125M")
 model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-neo-125M")
 
-
-# Buat pipeline text-generation
-pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=300)
+# Buat pipeline dengan sampling agar output lebih variatif
+pipe = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    max_new_tokens=300,
+    do_sample=True,
+    temperature=0.7,
+    top_p=0.95
+)
 
 def generate_ai_summary(input_data, prediction, prob_success):
     label = "BERHASIL" if prediction == 1 else "GAGAL"
