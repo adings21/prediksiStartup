@@ -2,8 +2,9 @@
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 
 # Load tokenizer dan model Qwen
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3-0.6B")
+tokenizer = AutoTokenizer.from_pretrained("tiiuae/falcon-rw-1b")
+model = AutoModelForCausalLM.from_pretrained("tiiuae/falcon-rw-1b")
+
 
 
 # Buat pipeline text-generation
